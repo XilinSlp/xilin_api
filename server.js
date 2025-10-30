@@ -11,7 +11,8 @@ const productoRoutes  = require('./src/routes/producto.routes.js');
 const categoriaRoutes = require('./src/routes/categoria.routes.js');
 const solicitudRoutes = require('./src/routes/solicitud.routes.js');
 const blogRoutes      = require('./src/routes/blog.routes.js');
-
+const healthRoutes = require('./src/routes/health.routes.js');
+app.use('/api', healthRoutes);
 const app = express();
 
 // CORS (ajusta origins si necesitas restringir)
