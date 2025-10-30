@@ -1,4 +1,3 @@
-// src/config/database.js
 const { Pool } = require('pg');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -6,7 +5,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const pool = process.env.DATABASE_URL
   ? new Pool({
       connectionString: process.env.DATABASE_URL,
-      ssl: { rejectUnauthorized: false }
+      ssl: { rejectUnauthorized: false }   // << clave en Vercel
     })
   : new Pool({
       host: process.env.DB_HOST,
@@ -17,9 +16,7 @@ const pool = process.env.DATABASE_URL
       ssl: isProd ? { rejectUnauthorized: false } : false
     });
 
-pool.on('error', (err) => {
-  console.error('PG Pool Error:', err);
-});
+pool.on('error', (err) => console.error('PG Pool Error:', err));
 
 module.exports = {
   query: (text, params) => pool.query(text, params),
