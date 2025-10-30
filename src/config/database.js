@@ -28,3 +28,4 @@ module.exports = {
   query: (text, params) => pool.query(text, params),
   pool, // opcional por si quieres acceder al pool directo
 };
+ 
